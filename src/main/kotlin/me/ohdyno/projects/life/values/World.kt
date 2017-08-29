@@ -1,21 +1,19 @@
 package me.ohdyno.projects.life.values
 
-class World {
-    private val contents = mapOf(
-            Coordinates(x = 0, y = 0) to Dead(),
-            Coordinates(x = 0, y = 1) to Alive(),
-            Coordinates(x = 0, y = 2) to Dead(),
-
-            Coordinates(x = 1, y = 0) to Dead(),
-            Coordinates(x = 1, y = 1) to Alive(),
-            Coordinates(x = 1, y = 2) to Alive(),
-
-            Coordinates(x = 2, y = 0) to Alive(),
-            Coordinates(x = 2, y = 1) to Dead(),
-            Coordinates(x = 2, y = 2) to Alive()
-    )
+open class World(val width: Int, val height: Int) {
+    protected open val contents: MutableMap<Coordinates, Cell> = mutableMapOf()
 
     fun at(coordinates: Coordinates): Cell {
         return contents[coordinates] ?: Dead()
+    }
+
+    fun with(shape: LifeForm, origin: Coordinates = Coordinates(x = 0, y = 0)): World {
+        shape.forEachIndexed { row, columns ->
+            columns.forEachIndexed { column, cell ->
+                contents[Coordinates(row, column).translateOriginTo(origin)] = cell
+            }
+        }
+
+        return this
     }
 }

@@ -1,11 +1,11 @@
 package me.ohdyno.projects.life
 
+import com.nhaarman.mockito_kotlin.whenever
 import me.ohdyno.projects.life.values.World
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
 
 import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
@@ -27,10 +27,10 @@ class SimulatesConwayTest {
 
     @Test
     fun `simulates Conway's game of life for a given number of generations`() {
-        val seedWorld = World()
-        val nextWorld = World()
-        `when`(generatesSeedWorld.generate()).thenReturn(seedWorld)
-        `when`(replacesWorld.replace(seedWorld)).thenReturn(nextWorld)
+        val seedWorld = World(10, 10)
+        val nextWorld = World(10, 10)
+        whenever(generatesSeedWorld.generate()).thenReturn(seedWorld)
+        whenever(replacesWorld.replace(seedWorld)).thenReturn(nextWorld)
 
         subject.simulate(2)
 
