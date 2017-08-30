@@ -9,3 +9,5 @@ class LifeForms {
         )
     }
 }
+
+typealias LifeForm = Array<Array<Cell>>
