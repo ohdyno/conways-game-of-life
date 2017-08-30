@@ -1,4 +1,4 @@
-package me.ohdyno.projects.life.values
+package me.ohdyno.projects.life.simulate.values
 
 open class World(val width: Int, val height: Int) {
     protected open val contents: MutableMap<Coordinates, Cell> = mutableMapOf()

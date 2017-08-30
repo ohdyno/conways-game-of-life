@@ -1,6 +1,6 @@
-package me.ohdyno.projects.life
+package me.ohdyno.projects.life.simulate.replace
 
-import me.ohdyno.projects.life.values.*
+import me.ohdyno.projects.life.simulate.values.*
 
 class ReplacesCell {
     fun replace(world: World, coordinates: Coordinates): Cell {

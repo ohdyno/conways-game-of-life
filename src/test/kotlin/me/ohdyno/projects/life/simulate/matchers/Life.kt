@@ -1,8 +1,8 @@
-package me.ohdyno.projects.life.matchers
+package me.ohdyno.projects.life.simulate.matchers
 
-import me.ohdyno.projects.life.assertions.AssertCell
-import me.ohdyno.projects.life.values.Coordinates
-import me.ohdyno.projects.life.values.World
+import me.ohdyno.projects.life.simulate.assertions.AssertCell
+import me.ohdyno.projects.life.simulate.values.Coordinates
+import me.ohdyno.projects.life.simulate.values.World
 
 class Life(val world: World) {
     companion object {

@@ -1,10 +1,11 @@
-package me.ohdyno.projects.life
+package me.ohdyno.projects.life.simulate
 
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.eq
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
-import me.ohdyno.projects.life.values.*
+import me.ohdyno.projects.life.simulate.replace.ReplacesCell
+import me.ohdyno.projects.life.simulate.values.*
 import org.hamcrest.core.Is
 import org.hamcrest.core.IsSame
 import org.junit.Assert

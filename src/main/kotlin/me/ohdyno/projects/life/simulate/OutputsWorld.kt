@@ -1,6 +1,6 @@
-package me.ohdyno.projects.life
+package me.ohdyno.projects.life.simulate
 
-import me.ohdyno.projects.life.values.World
+import me.ohdyno.projects.life.simulate.values.World
 
 class OutputsWorld {
     fun output(world: World) {

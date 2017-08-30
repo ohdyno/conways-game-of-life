@@ -1,4 +1,4 @@
-package me.ohdyno.projects.life.values
+package me.ohdyno.projects.life.simulate.values
 
 class LifeForms {
     companion object {

@@ -1,7 +1,10 @@
 package me.ohdyno.projects.life
 
 import com.nhaarman.mockito_kotlin.whenever
-import me.ohdyno.projects.life.values.World
+import me.ohdyno.projects.life.simulate.GeneratesSeedWorld
+import me.ohdyno.projects.life.simulate.OutputsWorld
+import me.ohdyno.projects.life.simulate.ReplacesWorld
+import me.ohdyno.projects.life.simulate.values.World
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks

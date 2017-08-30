@@ -1,7 +1,7 @@
-package me.ohdyno.projects.life
+package me.ohdyno.projects.life.simulate
 
-import me.ohdyno.projects.life.matchers.Life
-import me.ohdyno.projects.life.values.Coordinates
+import me.ohdyno.projects.life.simulate.matchers.Life
+import me.ohdyno.projects.life.simulate.values.Coordinates
 import org.junit.Test
 
 class GeneratesSeedWorldTest {

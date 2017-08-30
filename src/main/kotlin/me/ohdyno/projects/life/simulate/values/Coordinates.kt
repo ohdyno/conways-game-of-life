@@ -1,4 +1,4 @@
-package me.ohdyno.projects.life.values
+package me.ohdyno.projects.life.simulate.values
 
 data class Coordinates(val x: Int, val y: Int) {
 

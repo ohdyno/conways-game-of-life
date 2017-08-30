@@ -1,9 +1,9 @@
-package me.ohdyno.projects.life.assertions
+package me.ohdyno.projects.life.simulate.assertions
 
-import me.ohdyno.projects.life.values.Alive
-import me.ohdyno.projects.life.values.Cell
-import me.ohdyno.projects.life.values.Coordinates
-import me.ohdyno.projects.life.values.Dead
+import me.ohdyno.projects.life.simulate.values.Alive
+import me.ohdyno.projects.life.simulate.values.Cell
+import me.ohdyno.projects.life.simulate.values.Coordinates
+import me.ohdyno.projects.life.simulate.values.Dead
 import org.hamcrest.core.IsInstanceOf
 import org.junit.Assert
 

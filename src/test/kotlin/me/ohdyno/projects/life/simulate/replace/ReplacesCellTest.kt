@@ -1,9 +1,9 @@
-package me.ohdyno.projects.life
+package me.ohdyno.projects.life.simulate.replace
 
-import me.ohdyno.projects.life.assertions.AssertCell
-import me.ohdyno.projects.life.values.Coordinates
-import me.ohdyno.projects.life.values.LifeForms
-import me.ohdyno.projects.life.values.World
+import me.ohdyno.projects.life.simulate.assertions.AssertCell
+import me.ohdyno.projects.life.simulate.values.Coordinates
+import me.ohdyno.projects.life.simulate.values.LifeForms
+import me.ohdyno.projects.life.simulate.values.World
 import org.junit.Test
 
 class ReplacesCellTest {
