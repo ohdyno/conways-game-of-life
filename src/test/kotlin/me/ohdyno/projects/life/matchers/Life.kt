@@ -1,5 +1,6 @@
 package me.ohdyno.projects.life.matchers
 
+import me.ohdyno.projects.life.assertions.AssertCell
 import me.ohdyno.projects.life.values.Coordinates
 import me.ohdyno.projects.life.values.World
 
@@ -10,7 +11,7 @@ class Life(val world: World) {
         }
     }
 
-    fun at(coordinates: Coordinates): CellMatcher {
-        return CellMatcher(world.at(coordinates), coordinates)
+    fun at(coordinates: Coordinates): AssertCell {
+        return AssertCell(world.at(coordinates), coordinates)
     }
 }

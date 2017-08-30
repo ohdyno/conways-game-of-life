@@ -10,7 +10,7 @@ open class World(val width: Int, val height: Int) {
     fun with(shape: LifeForm, origin: Coordinates = Coordinates(x = 0, y = 0)): World {
         shape.forEachIndexed { row, columns ->
             columns.forEachIndexed { column, cell ->
-                contents[Coordinates(row, column).translateOriginTo(origin)] = cell
+                contents[Coordinates(row, column).translateX(origin.x).translateY(origin.y)] = cell
             }
         }
 
