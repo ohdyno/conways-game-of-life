@@ -2,25 +2,29 @@ package me.ohdyno.projects.life.simulate
 
 import me.ohdyno.projects.life.simulate.matchers.Life
 import me.ohdyno.projects.life.simulate.values.Coordinates
-import org.junit.Test
+import org.jetbrains.spek.api.dsl.it
+import org.jetbrains.spek.api.dsl.on
+import org.jetbrains.spek.subject.SubjectSpek
 
-class GeneratesSeedWorldTest {
-    private val subject = GeneratesSeedWorld()
+object GeneratesSeedWorldTest : SubjectSpek<GeneratesSeedWorld>({
+    subject { GeneratesSeedWorld() }
 
-    @Test
-    fun `it generates a world with a glider`() {
+    on("generate") {
         val result = subject.generate()
 
-        Life.`in`(result).at(Coordinates(x = 0, y = 0)).isDead()
-        Life.`in`(result).at(Coordinates(x = 0, y = 1)).isAlive()
-        Life.`in`(result).at(Coordinates(x = 0, y = 2)).isDead()
+        it("generates a world with a glider") {
 
-        Life.`in`(result).at(Coordinates(x = 1, y = 0)).isDead()
-        Life.`in`(result).at(Coordinates(x = 1, y = 1)).isAlive()
-        Life.`in`(result).at(Coordinates(x = 1, y = 2)).isAlive()
+            Life.`in`(result).at(Coordinates(x = 0, y = 0)).isDead()
+            Life.`in`(result).at(Coordinates(x = 0, y = 1)).isAlive()
+            Life.`in`(result).at(Coordinates(x = 0, y = 2)).isDead()
 
-        Life.`in`(result).at(Coordinates(x = 2, y = 0)).isAlive()
-        Life.`in`(result).at(Coordinates(x = 2, y = 1)).isDead()
-        Life.`in`(result).at(Coordinates(x = 2, y = 2)).isAlive()
+            Life.`in`(result).at(Coordinates(x = 1, y = 0)).isDead()
+            Life.`in`(result).at(Coordinates(x = 1, y = 1)).isAlive()
+            Life.`in`(result).at(Coordinates(x = 1, y = 2)).isAlive()
+
+            Life.`in`(result).at(Coordinates(x = 2, y = 0)).isAlive()
+            Life.`in`(result).at(Coordinates(x = 2, y = 1)).isDead()
+            Life.`in`(result).at(Coordinates(x = 2, y = 2)).isAlive()
+        }
     }
-}
+})

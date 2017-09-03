@@ -18,14 +18,19 @@ class World(val width: Int, val height: Int) {
         return this
     }
 
-    fun map(fn: (world: World, coordinates: Coordinates) -> Cell): World {
-        val newWorld = World(this.width, this.height)
-
+    fun forEach(fn: (Coordinates) -> Unit) {
         (0 until width).forEach { x ->
             (0 until height).forEach { y ->
-                val coordinates = Coordinates(x, y)
-                newWorld.contents[coordinates] = fn(this, coordinates)
+                fn(Coordinates(x, y))
             }
+        }
+    }
+
+    fun map(fn: (World, Coordinates) -> Cell): World {
+        val newWorld = World(this.width, this.height)
+
+        this.forEach { coordinates ->
+            newWorld.contents[coordinates] = fn(this, coordinates)
         }
 
         return newWorld
