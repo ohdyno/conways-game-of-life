@@ -22,7 +22,7 @@ object ReplacesWorldTest : SubjectSpek<ReplacesWorld>({
 
     describe("Replacing a new world") {
         it("should replace every cell in the world") {
-            val world = World(width = 10, height = 10).with(shape = LifeForms.glider)
+            val world = World(width = 10, height = 10).with(shape = DefinedLifeForms.glider)
             whenever(replacesCell.replace(eq(world), any())).thenReturn(mock())
 
             subject.replace(world)

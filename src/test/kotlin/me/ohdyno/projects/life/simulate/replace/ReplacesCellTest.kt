@@ -12,13 +12,13 @@ import org.jetbrains.spek.subject.SubjectSpek
 object ReplacesCellTest : SubjectSpek<ReplacesCell>({
     describe("Replacing a single cell based on B3/S23") {
         subject { ReplacesCell() }
-        World(width = 3, height = 3).with(LifeForms.glider)
+        World(width = 3, height = 3).with(DefinedLifeForms.glider)
 
         given("the cell has 3 neighbors") {
             given("the cell is dead") {
                 on("replace") {
                     val result = subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Dead(), withAliveNeighbors = 3)), Coordinates(1, 1))
-                    it("return a live cell") {
+                    it("returns a live cell") {
                         assert.that(result, isA<Alive>())
                     }
                 }
@@ -27,7 +27,7 @@ object ReplacesCellTest : SubjectSpek<ReplacesCell>({
             given("the cell is alive") {
                 on("replace") {
                     val result = subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 3)), Coordinates(1, 1))
-                    it("return a live cell") {
+                    it("returns a live cell") {
                         assert.that(result, isA<Alive>())
                     }
                 }
@@ -38,7 +38,7 @@ object ReplacesCellTest : SubjectSpek<ReplacesCell>({
             given("the cell is alive") {
                 on("replace") {
                     val result = subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 2)), Coordinates(1, 1))
-                    it("return a live cell") {
+                    it("returns a live cell") {
                         assert.that(result, isA<Alive>())
                     }
                 }
@@ -47,7 +47,7 @@ object ReplacesCellTest : SubjectSpek<ReplacesCell>({
 
         given("for all other conditions") {
             on("replace") {
-                it("return a dead cell") {
+                it("returns a dead cell") {
                     assert.that(subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 1)), Coordinates(1, 1)), isA<Dead>())
                     assert.that(subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 4)), Coordinates(1, 1)), isA<Dead>())
                     assert.that(subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 5)), Coordinates(1, 1)), isA<Dead>())
