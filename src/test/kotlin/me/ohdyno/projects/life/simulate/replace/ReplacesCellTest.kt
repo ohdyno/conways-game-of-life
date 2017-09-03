@@ -1,8 +1,10 @@
 package me.ohdyno.projects.life.simulate.replace
 
 import com.natpryce.hamkrest.assertion.assert
-import com.natpryce.hamkrest.isA
+import com.natpryce.hamkrest.equalTo
 import me.ohdyno.projects.life.simulate.values.*
+import me.ohdyno.projects.life.simulate.values.Cell.Alive
+import me.ohdyno.projects.life.simulate.values.Cell.Dead
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
@@ -17,18 +19,18 @@ object ReplacesCellTest : SubjectSpek<ReplacesCell>({
         given("the cell has 3 neighbors") {
             given("the cell is dead") {
                 on("replace") {
-                    val result = subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Dead(), withAliveNeighbors = 3)), Coordinates(1, 1))
+                    val result = subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Dead, withAliveNeighbors = 3)), Coordinates(1, 1))
                     it("returns a live cell") {
-                        assert.that(result, isA<Alive>())
+                        assert.that(result, equalTo(Alive))
                     }
                 }
             }
 
             given("the cell is alive") {
                 on("replace") {
-                    val result = subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 3)), Coordinates(1, 1))
+                    val result = subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 3)), Coordinates(1, 1))
                     it("returns a live cell") {
-                        assert.that(result, isA<Alive>())
+                        assert.that(result, equalTo(Alive))
                     }
                 }
             }
@@ -37,9 +39,9 @@ object ReplacesCellTest : SubjectSpek<ReplacesCell>({
         given("the cell has 2 neighbors") {
             given("the cell is alive") {
                 on("replace") {
-                    val result = subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 2)), Coordinates(1, 1))
+                    val result = subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 2)), Coordinates(1, 1))
                     it("returns a live cell") {
-                        assert.that(result, isA<Alive>())
+                        assert.that(result, equalTo(Alive))
                     }
                 }
             }
@@ -48,12 +50,12 @@ object ReplacesCellTest : SubjectSpek<ReplacesCell>({
         given("for all other conditions") {
             on("replace") {
                 it("returns a dead cell") {
-                    assert.that(subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 1)), Coordinates(1, 1)), isA<Dead>())
-                    assert.that(subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 4)), Coordinates(1, 1)), isA<Dead>())
-                    assert.that(subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 5)), Coordinates(1, 1)), isA<Dead>())
-                    assert.that(subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 6)), Coordinates(1, 1)), isA<Dead>())
-                    assert.that(subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 7)), Coordinates(1, 1)), isA<Dead>())
-                    assert.that(subject.replace(World(3, 3).with(createCanonicalForm(centeredAroundCell = Alive(), withAliveNeighbors = 8)), Coordinates(1, 1)), isA<Dead>())
+                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 1)), Coordinates(1, 1)), equalTo(Dead))
+                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 4)), Coordinates(1, 1)), equalTo(Dead))
+                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 5)), Coordinates(1, 1)), equalTo(Dead))
+                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 6)), Coordinates(1, 1)), equalTo(Dead))
+                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 7)), Coordinates(1, 1)), equalTo(Dead))
+                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 8)), Coordinates(1, 1)), equalTo(Dead))
                 }
             }
         }
@@ -61,7 +63,7 @@ object ReplacesCellTest : SubjectSpek<ReplacesCell>({
     }
 })
 
-private fun createCanonicalForm(centeredAroundCell: Cell, withAliveNeighbors: Int): LifeForm {
+private fun create3x3LifeForm(centeredAroundCell: Cell, withAliveNeighbors: Int): LifeForm {
     var aliveNeighbors = 0
     return Array(3) { y ->
         Array(3) { x ->
@@ -70,9 +72,9 @@ private fun createCanonicalForm(centeredAroundCell: Cell, withAliveNeighbors: In
             } else {
                 if (aliveNeighbors < withAliveNeighbors) {
                     aliveNeighbors++
-                    Alive()
+                    Alive
                 } else {
-                    Dead()
+                    Dead
                 }
             }
         }

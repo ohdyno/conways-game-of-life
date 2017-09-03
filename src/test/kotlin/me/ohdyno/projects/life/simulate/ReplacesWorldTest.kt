@@ -7,7 +7,11 @@ import com.nhaarman.mockito_kotlin.eq
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import me.ohdyno.projects.life.simulate.replace.ReplacesCell
-import me.ohdyno.projects.life.simulate.values.*
+import me.ohdyno.projects.life.simulate.values.Cell
+import me.ohdyno.projects.life.simulate.values.Cell.Alive
+import me.ohdyno.projects.life.simulate.values.Coordinates
+import me.ohdyno.projects.life.simulate.values.DefinedLifeForms
+import me.ohdyno.projects.life.simulate.values.World
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.subject.SubjectSpek
@@ -34,7 +38,7 @@ object ReplacesWorldTest : SubjectSpek<ReplacesWorld>({
 
         it("should return a new World with Cells that were replaced") {
             val world = World(width = 1, height = 1)
-            val replacementCell: Cell = Alive()
+            val replacementCell: Cell = Alive
             whenever(replacesCell.replace(world, Coordinates(0, 0))).thenReturn(replacementCell)
 
             val result = subject.replace(world)

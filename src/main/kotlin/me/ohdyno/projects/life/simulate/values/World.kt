@@ -4,7 +4,7 @@ class World(val width: Int, val height: Int) {
     private val contents: MutableMap<Coordinates, Cell> = mutableMapOf()
 
     fun at(coordinates: Coordinates): Cell {
-        return contents[coordinates] ?: Dead()
+        return contents[coordinates] ?: Cell.Dead
     }
 
     fun with(shape: LifeForm, origin: Coordinates = Coordinates(x = 0, y = 0)): World {

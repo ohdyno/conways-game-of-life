@@ -1,7 +1,5 @@
 package me.ohdyno.projects.life.simulate.values
 
-interface Cell
-
-class Dead : Cell
-
-class Alive: Cell
+enum class Cell {
+    Alive, Dead
+}
