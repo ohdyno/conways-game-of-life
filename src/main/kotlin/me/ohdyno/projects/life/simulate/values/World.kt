@@ -5,9 +5,9 @@ class World(val width: Int, val height: Int, vararg lifeForms: Pair<LifeForm, Co
     private val contents: MutableMap<Coordinates, Cell> by lazy {
         val _contents: MutableMap<Coordinates, Cell> = mutableMapOf()
         lifeForms.forEach { (lifeForm, origin) ->
-            lifeForm.coordinates.forEach { coordinates ->
+            lifeForm.forEachCellWithCoordinates { cell, coordinates ->
                 val translatedCoordinates = coordinates.translateX(origin.x).translateY(origin.y)
-                _contents[translatedCoordinates] = lifeForm.cellAt(coordinates)
+                _contents[translatedCoordinates] = cell
             }
         }
         _contents
