@@ -14,12 +14,12 @@ import org.jetbrains.spek.subject.SubjectSpek
 object ReplacesCellTest : SubjectSpek<ReplacesCell>({
     describe("Replacing a single cell based on B3/S23") {
         subject { ReplacesCell() }
-        World(width = 3, height = 3).with(DefinedLifeForms.glider)
+        World(width = 3, height = 3, lifeForms = DefinedLifeForms.glider to Coordinates.origin)
 
         given("the cell has 3 neighbors") {
             given("the cell is dead") {
                 on("replace") {
-                    val result = subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Dead, withAliveNeighbors = 3)), Coordinates(1, 1))
+                    val result = subject.replace(World(3, 3, lifeForms = create3x3LifeForm(centeredAroundCell = Dead, withAliveNeighbors = 3) to Coordinates.origin), Coordinates(1, 1))
                     it("returns a live cell") {
                         assert.that(result, equalTo(Alive))
                     }
@@ -28,7 +28,7 @@ object ReplacesCellTest : SubjectSpek<ReplacesCell>({
 
             given("the cell is alive") {
                 on("replace") {
-                    val result = subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 3)), Coordinates(1, 1))
+                    val result = subject.replace(World(3, 3, lifeForms = create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 3) to Coordinates.origin), Coordinates(1, 1))
                     it("returns a live cell") {
                         assert.that(result, equalTo(Alive))
                     }
@@ -39,7 +39,7 @@ object ReplacesCellTest : SubjectSpek<ReplacesCell>({
         given("the cell has 2 neighbors") {
             given("the cell is alive") {
                 on("replace") {
-                    val result = subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 2)), Coordinates(1, 1))
+                    val result = subject.replace(World(3, 3, lifeForms = create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 2) to Coordinates.origin), Coordinates(1, 1))
                     it("returns a live cell") {
                         assert.that(result, equalTo(Alive))
                     }
@@ -50,12 +50,12 @@ object ReplacesCellTest : SubjectSpek<ReplacesCell>({
         given("for all other conditions") {
             on("replace") {
                 it("returns a dead cell") {
-                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 1)), Coordinates(1, 1)), equalTo(Dead))
-                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 4)), Coordinates(1, 1)), equalTo(Dead))
-                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 5)), Coordinates(1, 1)), equalTo(Dead))
-                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 6)), Coordinates(1, 1)), equalTo(Dead))
-                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 7)), Coordinates(1, 1)), equalTo(Dead))
-                    assert.that(subject.replace(World(3, 3).with(create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 8)), Coordinates(1, 1)), equalTo(Dead))
+                    assert.that(subject.replace(World(3, 3, lifeForms = create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 1) to Coordinates.origin), Coordinates(1, 1)), equalTo(Dead))
+                    assert.that(subject.replace(World(3, 3, lifeForms = create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 4) to Coordinates.origin), Coordinates(1, 1)), equalTo(Dead))
+                    assert.that(subject.replace(World(3, 3, lifeForms = create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 5) to Coordinates.origin), Coordinates(1, 1)), equalTo(Dead))
+                    assert.that(subject.replace(World(3, 3, lifeForms = create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 6) to Coordinates.origin), Coordinates(1, 1)), equalTo(Dead))
+                    assert.that(subject.replace(World(3, 3, lifeForms = create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 7) to Coordinates.origin), Coordinates(1, 1)), equalTo(Dead))
+                    assert.that(subject.replace(World(3, 3, lifeForms = create3x3LifeForm(centeredAroundCell = Alive, withAliveNeighbors = 8) to Coordinates.origin), Coordinates(1, 1)), equalTo(Dead))
                 }
             }
         }
