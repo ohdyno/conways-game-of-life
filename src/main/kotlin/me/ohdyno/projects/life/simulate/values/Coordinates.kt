@@ -5,11 +5,15 @@ data class Coordinates(val x: Int, val y: Int) {
         val origin = Coordinates(0, 0)
     }
 
-    fun translateX(delta: Int): Coordinates {
+    fun translateXBy(delta: Int): Coordinates {
         return Coordinates(x = this.x + delta, y = this.y)
     }
 
-    fun translateY(delta: Int): Coordinates {
+    fun translateYBy(delta: Int): Coordinates {
         return Coordinates(x = this.x, y = this.y + delta)
+    }
+
+    operator fun plus(that: Coordinates): Coordinates {
+        return this.translateXBy(that.x).translateYBy(that.y)
     }
 }

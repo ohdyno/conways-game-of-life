@@ -39,11 +39,11 @@ object ReplacesWorldTest : SubjectSpek<ReplacesWorld>({
         it("should return a new World with Cells that were replaced") {
             val world = World(width = 1, height = 1)
             val replacementCell: Cell = Alive
-            whenever(replacesCell.replace(world, Coordinates(0, 0))).thenReturn(replacementCell)
+            whenever(replacesCell.replace(world, Coordinates.origin)).thenReturn(replacementCell)
 
             val result = subject.replace(world)
 
-            assert.that(result.at(Coordinates(0, 0)), sameInstance(replacementCell))
+            assert.that(result.at(Coordinates.origin), sameInstance(replacementCell))
         }
     }
 })

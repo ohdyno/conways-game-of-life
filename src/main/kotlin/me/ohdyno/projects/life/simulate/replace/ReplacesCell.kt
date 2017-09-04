@@ -19,7 +19,7 @@ class ReplacesCell {
         var neighborCount = 0
         for (dx in -1..1) {
             for (dy in -1..1) {
-                val neighborCoordinate = coordinates.translateX(dx).translateY(dy)
+                val neighborCoordinate = coordinates.translateXBy(dx).translateYBy(dy)
                 if (coordinates != neighborCoordinate && world.at(neighborCoordinate) == Alive) {
                     neighborCount++
                 }

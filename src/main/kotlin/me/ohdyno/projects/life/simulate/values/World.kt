@@ -1,20 +1,31 @@
 package me.ohdyno.projects.life.simulate.values
 
-class World(val width: Int, val height: Int, vararg lifeForms: Pair<LifeForm, Coordinates>) {
+import me.ohdyno.projects.life.simulate.values.Cell.Alive
+import me.ohdyno.projects.life.simulate.values.Cell.Dead
 
-    private val contents: MutableMap<Coordinates, Cell> by lazy {
-        val _contents: MutableMap<Coordinates, Cell> = mutableMapOf()
+private typealias Grid = MutableMap<Coordinates, Cell>
+
+class World(val width: Int, val height: Int, vararg lifeForms: Pair<LifeForm, Coordinates>) {
+    private val contents: Grid = mutableMapOf()
+
+    init {
+        addLifeForms(lifeForms)
+    }
+
+    private fun addLifeForms(lifeForms: Array<out Pair<LifeForm, Coordinates>>) {
         lifeForms.forEach { (lifeForm, origin) ->
-            lifeForm.forEachCellWithCoordinates { cell, coordinates ->
-                val translatedCoordinates = coordinates.translateX(origin.x).translateY(origin.y)
-                _contents[translatedCoordinates] = cell
-            }
+            addLifeForm(lifeForm, origin)
         }
-        _contents
+    }
+
+    private fun addLifeForm(lifeForm: LifeForm, translation: Coordinates) {
+        lifeForm.forEachCellWithCoordinates { cell, coordinates ->
+            contents.set(cell, at = coordinates + translation)
+        }
     }
 
     fun at(coordinates: Coordinates): Cell {
-        return contents[coordinates] ?: Cell.Dead
+        return contents[coordinates] ?: Dead
     }
 
     fun forEach(fn: World.(Coordinates) -> Unit) {
@@ -29,9 +40,15 @@ class World(val width: Int, val height: Int, vararg lifeForms: Pair<LifeForm, Co
         val newWorld = World(width = width, height = height)
 
         forEach { coordinates ->
-            newWorld.contents[coordinates] = fn(this, coordinates)
+            newWorld.contents.set(fn(this, coordinates), at = coordinates)
         }
 
         return newWorld
+    }
+}
+
+private fun Grid.set(cell: Cell, at: Coordinates) {
+    if (cell == Alive) {
+        this[at] = cell
     }
 }
