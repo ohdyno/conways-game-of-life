@@ -8,7 +8,7 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import me.ohdyno.projects.life.simulate.replace.ReplacesCell
 import me.ohdyno.projects.life.simulate.values.Cell
-import me.ohdyno.projects.life.simulate.values.Cell.Alive
+import me.ohdyno.projects.life.simulate.values.Cell.Live
 import me.ohdyno.projects.life.simulate.values.Coordinates
 import me.ohdyno.projects.life.simulate.values.DefinedLifeForms
 import me.ohdyno.projects.life.simulate.values.World
@@ -38,7 +38,7 @@ object ReplacesWorldTest : SubjectSpek<ReplacesWorld>({
 
         it("should return a new World with Cells that were replaced") {
             val world = World(width = 1, height = 1)
-            val replacementCell: Cell = Alive
+            val replacementCell: Cell = Live
             whenever(replacesCell.replace(world, Coordinates.origin)).thenReturn(replacementCell)
 
             val result = subject.replace(world)

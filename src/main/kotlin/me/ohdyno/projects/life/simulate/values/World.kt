@@ -1,6 +1,6 @@
 package me.ohdyno.projects.life.simulate.values
 
-import me.ohdyno.projects.life.simulate.values.Cell.Alive
+import me.ohdyno.projects.life.simulate.values.Cell.Live
 import me.ohdyno.projects.life.simulate.values.Cell.Dead
 
 private typealias Grid = MutableMap<Coordinates, Cell>
@@ -48,7 +48,7 @@ class World(val width: Int, val height: Int, vararg lifeForms: Pair<LifeForm, Co
 }
 
 private fun Grid.set(cell: Cell, at: Coordinates) {
-    if (cell == Alive) {
+    if (cell == Live) {
         this[at] = cell
     }
 }

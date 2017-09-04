@@ -1,13 +1,13 @@
 package me.ohdyno.projects.life.simulate.values
 
-import me.ohdyno.projects.life.simulate.values.Cell.Alive
 import me.ohdyno.projects.life.simulate.values.Cell.Dead
+import me.ohdyno.projects.life.simulate.values.Cell.Live
 
 object DefinedLifeForms {
     val glider = arrayOf(
-            arrayOf(Dead, Alive, Dead),
-            arrayOf(Dead, Alive, Alive),
-            arrayOf(Alive, Dead, Alive)
+            arrayOf(Dead, Live, Dead),
+            arrayOf(Dead, Live, Live),
+            arrayOf(Live, Dead, Live)
     )
 }
 
