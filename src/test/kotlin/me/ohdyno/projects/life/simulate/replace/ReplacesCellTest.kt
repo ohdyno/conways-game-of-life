@@ -14,7 +14,6 @@ import org.jetbrains.spek.subject.SubjectSpek
 object ReplacesCellTest : SubjectSpek<ReplacesCell>({
     describe("Replacing a single cell based on B3/S23") {
         subject { ReplacesCell() }
-        World(width = 3, height = 3, lifeForms = DefinedLifeForms.glider to Coordinates.origin)
 
         given("the cell has 3 neighbors") {
             given("the cell is dead") {
