@@ -16,4 +16,8 @@ data class Coordinates(val x: Int, val y: Int) {
     operator fun plus(that: Coordinates): Coordinates {
         return this.translateXBy(that.x).translateYBy(that.y)
     }
+
+    override fun toString(): String {
+        return "(x=$x, y=$y)"
+    }
 }

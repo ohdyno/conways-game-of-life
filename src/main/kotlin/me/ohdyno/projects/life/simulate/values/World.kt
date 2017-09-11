@@ -29,8 +29,8 @@ class World(val width: Int, val height: Int, vararg lifeForms: Pair<LifeForm, Co
     }
 
     fun forEach(fn: World.(Coordinates) -> Unit) {
-        (0 until width).forEach { x ->
-            (0 until height).forEach { y ->
+        (0 until height).forEach { y ->
+            (0 until width).forEach { x ->
                 this.fn(Coordinates(x, y))
             }
         }
