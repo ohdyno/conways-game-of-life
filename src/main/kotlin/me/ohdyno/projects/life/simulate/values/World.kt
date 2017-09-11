@@ -1,7 +1,7 @@
 package me.ohdyno.projects.life.simulate.values
 
-import me.ohdyno.projects.life.simulate.values.Cell.Live
 import me.ohdyno.projects.life.simulate.values.Cell.Dead
+import me.ohdyno.projects.life.simulate.values.Cell.Live
 
 private typealias Grid = MutableMap<Coordinates, Cell>
 

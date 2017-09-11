@@ -1,8 +1,8 @@
 package me.ohdyno.projects.life.simulate.replace
 
 import me.ohdyno.projects.life.simulate.values.Cell
-import me.ohdyno.projects.life.simulate.values.Cell.Live
 import me.ohdyno.projects.life.simulate.values.Cell.Dead
+import me.ohdyno.projects.life.simulate.values.Cell.Live
 import me.ohdyno.projects.life.simulate.values.Coordinates
 import me.ohdyno.projects.life.simulate.values.World
 

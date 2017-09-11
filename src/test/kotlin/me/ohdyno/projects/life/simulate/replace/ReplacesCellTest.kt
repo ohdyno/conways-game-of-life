@@ -2,9 +2,12 @@ package me.ohdyno.projects.life.simulate.replace
 
 import com.natpryce.hamkrest.assertion.assert
 import com.natpryce.hamkrest.equalTo
-import me.ohdyno.projects.life.simulate.values.*
+import me.ohdyno.projects.life.simulate.values.Cell
 import me.ohdyno.projects.life.simulate.values.Cell.Dead
 import me.ohdyno.projects.life.simulate.values.Cell.Live
+import me.ohdyno.projects.life.simulate.values.Coordinates
+import me.ohdyno.projects.life.simulate.values.LifeForm
+import me.ohdyno.projects.life.simulate.values.World
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
