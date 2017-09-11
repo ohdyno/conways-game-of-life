@@ -12,6 +12,7 @@ class OutputsWorld(private val out: PrintStream, private val convertCellToString
                 out.println()
             }
         }
+        out.println()
     }
 }
 

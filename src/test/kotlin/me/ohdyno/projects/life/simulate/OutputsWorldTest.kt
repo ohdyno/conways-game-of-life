@@ -1,6 +1,7 @@
 package me.ohdyno.projects.life.simulate
 
 import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import me.ohdyno.projects.life.simulate.values.Cell
@@ -19,6 +20,7 @@ object OutputsWorldTest : SubjectSpek<OutputsWorld>({
         val convertCellToString: ConvertCellToString = mock()
         whenever(convertCellToString.convert(Cell.Live)).thenReturn("live")
         whenever(convertCellToString.convert(Cell.Dead)).thenReturn("dead")
+
         subject { OutputsWorld(outputStream, convertCellToString) }
 
         given("A world with dead and live cells") {
@@ -35,7 +37,7 @@ object OutputsWorldTest : SubjectSpek<OutputsWorld>({
                     verify(convertCellToString).convert(Cell.Dead)
                     verify(outputStream).print("live")
                     verify(outputStream).print("dead")
-                    verify(outputStream).println()
+                    verify(outputStream, times(2)).println()
                 }
             }
         }

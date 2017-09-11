@@ -11,12 +11,9 @@ object ConvertCellToStringTest : SubjectSpek<ConvertCellToString>({
     describe("Converting a Cell to String format") {
         subject { ConvertCellToString() }
 
-        it("should convert a live cell to +") {
-            assert.that(subject.convert(Cell.Live), equalTo("+"))
-        }
-
-        it("should convert a dead cell to 0") {
-            assert.that(subject.convert(Cell.Dead), equalTo("0"))
+        it("should be able to convert both live and dead cells") {
+            assert.that(subject.convert(Cell.Live), equalTo("0"))
+            assert.that(subject.convert(Cell.Dead), equalTo("-"))
         }
     }
 })
