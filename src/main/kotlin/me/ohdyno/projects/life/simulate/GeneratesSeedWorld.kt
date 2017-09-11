@@ -6,7 +6,7 @@ import me.ohdyno.projects.life.simulate.values.World
 
 class GeneratesSeedWorld {
     fun generate(): World {
-        return World(width = 3, height = 3,
-                lifeForms = DefinedLifeForms.glider to Coordinates.origin)
+        return World(width = 10, height = 10,
+                lifeForms = DefinedLifeForms.glider to Coordinates(3,3))
     }
 }

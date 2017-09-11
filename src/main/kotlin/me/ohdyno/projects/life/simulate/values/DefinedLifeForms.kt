@@ -6,8 +6,8 @@ import me.ohdyno.projects.life.simulate.values.Cell.Live
 object DefinedLifeForms {
     val glider = arrayOf(
             arrayOf(Dead, Live, Dead),
-            arrayOf(Dead, Live, Live),
-            arrayOf(Live, Dead, Live)
+            arrayOf(Dead, Dead, Live),
+            arrayOf(Live, Live, Live)
     )
 }
 
