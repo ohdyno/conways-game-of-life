@@ -4,10 +4,10 @@ import me.ohdyno.projects.life.simulate.values.Coordinates
 import me.ohdyno.projects.life.simulate.values.World
 import java.io.PrintStream
 
-class OutputsWorld(private val out: PrintStream, val outputCell: OutputCell) {
+class OutputsWorld(private val out: PrintStream, private val convertCellToString: ConvertCellToString) {
     fun output(world: World) {
         world.forEach { coordinates ->
-            out.print(outputCell.output(this.at(coordinates)))
+            out.print(convertCellToString.convert(this.at(coordinates)))
             if (coordinates.isEdgeOf(this)) {
                 out.println()
             }
@@ -16,5 +16,5 @@ class OutputsWorld(private val out: PrintStream, val outputCell: OutputCell) {
 }
 
 private fun Coordinates.isEdgeOf(world: World): Boolean {
-    return this.x == world.width - 1;
+    return this.x == world.width - 1
 }

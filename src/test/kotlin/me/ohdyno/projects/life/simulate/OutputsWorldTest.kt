@@ -11,16 +11,15 @@ import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
 import org.jetbrains.spek.subject.SubjectSpek
-import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
 object OutputsWorldTest : SubjectSpek<OutputsWorld>({
     describe("Outputting a world") {
         val outputStream: PrintStream = mock()
-        val outputCell: OutputCell = mock()
-        whenever(outputCell.output(Cell.Live)).thenReturn("live")
-        whenever(outputCell.output(Cell.Dead)).thenReturn("dead")
-        subject { OutputsWorld(outputStream, outputCell) }
+        val convertCellToString: ConvertCellToString = mock()
+        whenever(convertCellToString.convert(Cell.Live)).thenReturn("live")
+        whenever(convertCellToString.convert(Cell.Dead)).thenReturn("dead")
+        subject { OutputsWorld(outputStream, convertCellToString) }
 
         given("A world with dead and live cells") {
             val world = World(width = 2, height = 1, lifeForms = arrayOf(
@@ -31,9 +30,9 @@ object OutputsWorldTest : SubjectSpek<OutputsWorld>({
             on("outputting the world") {
                 subject.output(world)
 
-                it("should call output cell on every cell in the world and send the result to outputStream") {
-                    verify(outputCell).output(Cell.Live)
-                    verify(outputCell).output(Cell.Dead)
+                it("should call convert cell on every cell in the world and send the result to outputStream") {
+                    verify(convertCellToString).convert(Cell.Live)
+                    verify(convertCellToString).convert(Cell.Dead)
                     verify(outputStream).print("live")
                     verify(outputStream).print("dead")
                     verify(outputStream).println()
