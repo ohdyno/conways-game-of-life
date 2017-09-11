@@ -1,4 +1,4 @@
-package me.ohdyno.projects.life.simulate
+package me.ohdyno.projects.life.simulate.output
 
 import me.ohdyno.projects.life.simulate.values.Cell
 

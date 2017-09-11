@@ -1,7 +1,8 @@
-package me.ohdyno.projects.life.simulate
+package me.ohdyno.projects.life.simulate.output
 
 import com.natpryce.hamkrest.assertion.assert
 import com.natpryce.hamkrest.equalTo
+import me.ohdyno.projects.life.simulate.output.ConvertCellToString
 import me.ohdyno.projects.life.simulate.values.Cell
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.it

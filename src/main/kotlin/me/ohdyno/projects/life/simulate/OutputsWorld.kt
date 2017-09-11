@@ -1,5 +1,6 @@
 package me.ohdyno.projects.life.simulate
 
+import me.ohdyno.projects.life.simulate.output.ConvertCellToString
 import me.ohdyno.projects.life.simulate.values.Coordinates
 import me.ohdyno.projects.life.simulate.values.World
 import java.io.PrintStream

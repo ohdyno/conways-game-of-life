@@ -1,5 +1,5 @@
 import me.ohdyno.projects.life.SimulatesConway
-import me.ohdyno.projects.life.simulate.ConvertCellToString
+import me.ohdyno.projects.life.simulate.output.ConvertCellToString
 import me.ohdyno.projects.life.simulate.GeneratesSeedWorld
 import me.ohdyno.projects.life.simulate.OutputsWorld
 import me.ohdyno.projects.life.simulate.ReplacesWorld

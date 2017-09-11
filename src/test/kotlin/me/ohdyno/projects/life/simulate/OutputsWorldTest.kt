@@ -4,6 +4,7 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
+import me.ohdyno.projects.life.simulate.output.ConvertCellToString
 import me.ohdyno.projects.life.simulate.values.Cell
 import me.ohdyno.projects.life.simulate.values.Coordinates
 import me.ohdyno.projects.life.simulate.values.World
